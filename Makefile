@@ -7,9 +7,14 @@ help:
 
 .DEFAULT_GOAL := help
 
-install:		## setup venv and install py dependencies
+install-py:		## setup venv and install py dependencies
 	( \
 		python3 -m venv .venv; \
        	source .venv/bin/activate; \
        	python -m pip install -r requirements.txt; \
     )
+
+install-apt:	## install apt packages
+	( \
+		sudo apt install python3-pip; \
+	)
