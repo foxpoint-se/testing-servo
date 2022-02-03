@@ -1,3 +1,32 @@
+# Testing servo
+
+Testing with the objective of getting rid of annoying jitter.
+
+## Get started
+
+```
+git clone <this repo>
+cd path/to/project
+make install-apt
+make install-py
+make install-pigpio
+make add-me-to-gpio
+make start-pigpio
+```
+
+Connect a servo to ground, 5V and pwm pin 12. Then:
+
+```
+source source_me.sh
+python servo.py
+```
+
+Stop pigpio if you want:
+
+```
+make stop-pigpio
+```
+
 ## Notes
 
 Is this the problem with wheel?
