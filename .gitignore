@@ -1,2 +1,5 @@
 .venv
 .vscode
+
+# pigpio stuff
+pigpio-master

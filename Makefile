@@ -15,6 +15,26 @@ install-py:		## setup venv and install py dependencies
     )
 
 install-apt:	## install apt packages
+	sudo apt install python3-pip python-setuptools python3-setuptools unzip
+
+
+# Stolen from https://abyz.me.uk/rpi/pigpio/download.html 
+install-pigpio:		## install pigpio in this folder
 	( \
-		sudo apt install python3-pip; \
+		wget https://github.com/joan2937/pigpio/archive/master.zip; \
+		unzip master.zip; \
+		cd pigpio-master; \
+		make; \
+		sudo make install; \
 	)
+
+start-pigpio:		## start pigpio
+	sudo pigpiod
+
+stop-pigpio:		## stop pigpio
+	sudo killall pigpiod
+
+add-me-to-gpio:		## add current user to group `gpio`
+	$(eval CURRENT_USER=$(shell whoami))
+	source .venv/bin/activate
+	sudo python gpio_udev_setup.py --user $(CURRENT_USER)
